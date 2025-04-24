@@ -13,6 +13,17 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
         <activity
+            android:name=".activitypettrack.PetTrackActivity"
+            android:exported="true"
+            android:label="@string/title_activity_pet_track"
+            android:theme="@style/Theme.PetTrack.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
