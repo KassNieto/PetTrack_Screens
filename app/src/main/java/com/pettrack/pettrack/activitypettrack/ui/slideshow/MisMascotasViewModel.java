@@ -1,16 +1,16 @@
-package com.pettrack.pettrack.activitypettrack.ui.gallery;
+package com.pettrack.pettrack.activitypettrack.ui.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class MisMascotasViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public MisMascotasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("Mis Mascotas");
     }
 
     public LiveData<String> getText() {

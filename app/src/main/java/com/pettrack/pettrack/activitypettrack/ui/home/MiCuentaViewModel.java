@@ -1,16 +1,16 @@
-package com.pettrack.pettrack.activitypettrack.ui.slideshow;
+package com.pettrack.pettrack.activitypettrack.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class MiCuentaViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public MiCuentaViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("Mi cuenta");
     }
 
     public LiveData<String> getText() {

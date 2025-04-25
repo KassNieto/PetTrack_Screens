@@ -12,20 +12,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.pettrack.pettrack.databinding.FragmentGalleryBinding;
 
-public class GalleryFragment extends Fragment {
+public class CalendarioFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        CalendarioViewModel calendarioViewModel =
+                new ViewModelProvider(this).get(CalendarioViewModel.class);
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        calendarioViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
