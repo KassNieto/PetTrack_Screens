@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pettrack.pettrack.databinding.FragmentGalleryBinding;
+import com.pettrack.pettrack.databinding.FragmentCalendarioBinding;
 
 public class CalendarioFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentCalendarioBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CalendarioViewModel calendarioViewModel =
                 new ViewModelProvider(this).get(CalendarioViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentCalendarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
+        final TextView textView = binding.txtCalendario;
         calendarioViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

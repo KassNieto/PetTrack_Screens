@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitypettrack.ui.gallery.CalendarioFragment">
+    tools:context=".activitypettrack.ui.slideshow.MisMascotasFragment">
 
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/txtMisMascotas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

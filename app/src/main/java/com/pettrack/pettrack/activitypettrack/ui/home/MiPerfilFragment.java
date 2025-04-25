@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pettrack.pettrack.databinding.FragmentHomeBinding;
+import com.pettrack.pettrack.databinding.FragmentMiPerfilBinding;
 
 public class MiPerfilFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentMiPerfilBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         MiPerfilViewModel homeViewModel =
                 new ViewModelProvider(this).get(MiPerfilViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentMiPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        final TextView textView = binding.txtMiCuenta;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

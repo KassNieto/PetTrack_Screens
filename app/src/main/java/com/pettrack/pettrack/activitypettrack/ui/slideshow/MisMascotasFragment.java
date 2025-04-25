@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pettrack.pettrack.databinding.FragmentSlideshowBinding;
+import com.pettrack.pettrack.databinding.FragmentMisMascotasBinding;
 
-public class MisMascotashowFragment extends Fragment {
+public class MisMascotasFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentMisMascotasBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         MisMascotasViewModel misMascotasViewModel =
                 new ViewModelProvider(this).get(MisMascotasViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentMisMascotasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
+        final TextView textView = binding.txtMisMascotas;
         misMascotasViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
