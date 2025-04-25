@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.pettrack.pettrack.activitypettrack.ui.gallery.CalendarioFragment"
+        android:name="com.pettrack.pettrack.activitypettrack.ui.slideshow.MisMascotasFragment"
         android:label="@string/menu_mis_mascotas"
         tools:layout="@layout/fragment_mis_mascotas" />
 
