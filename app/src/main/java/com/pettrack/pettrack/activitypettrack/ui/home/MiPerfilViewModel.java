@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MiCuentaViewModel extends ViewModel {
+public class MiPerfilViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public MiCuentaViewModel() {
+    public MiPerfilViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("Mi cuenta");
     }

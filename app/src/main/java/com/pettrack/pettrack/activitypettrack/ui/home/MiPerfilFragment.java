@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.pettrack.pettrack.databinding.FragmentHomeBinding;
 
-public class MiCuentaFragment extends Fragment {
+public class MiPerfilFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        MiCuentaViewModel homeViewModel =
-                new ViewModelProvider(this).get(MiCuentaViewModel.class);
+        MiPerfilViewModel homeViewModel =
+                new ViewModelProvider(this).get(MiPerfilViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
