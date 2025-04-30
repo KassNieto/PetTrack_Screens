@@ -11,4 +11,7 @@
     <string name="menu_mi_perfil">Mi Perfil</string>
     <string name="menu_mis_mascotas">Mis Mascotas</string>
     <string name="menu_calendario">Calendario</string>
+    <string name="title_activity_tipo_mascota">TipoMascota</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
