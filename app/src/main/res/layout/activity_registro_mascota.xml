@@ -38,7 +38,7 @@
         <EditText
             android:id="@+id/edit_nombre_mascota"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:hint="Ingrese el nombre"
             android:inputType="text"
@@ -94,7 +94,7 @@
         <EditText
             android:id="@+id/edit_raza_mascota"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:hint="Ingrese la raza"
             android:inputType="text"
@@ -116,7 +116,7 @@
         <EditText
             android:id="@+id/edit_edad_mascota"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:hint="Ingrese la edad"
             android:inputType="number"
@@ -136,7 +136,7 @@
         <EditText
             android:id="@+id/edit_color_mascota"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:hint="Ingrese el color"
             android:inputType="text"
@@ -156,7 +156,7 @@
         <EditText
             android:id="@+id/edit_peso_mascota"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:hint="Ingrese el peso (kg)"
             android:inputType="numberDecimal"
