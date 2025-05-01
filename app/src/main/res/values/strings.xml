@@ -16,4 +16,11 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_tipo_mascota">¿Qué tipo es tu mascota?</string>
+
+    <string name="card_nombre_mascota">Darketa</string>
+    <string name="card_edad">Edad:</string>
+    <string name="card_edad_value">3 años </string>
+    <string name="card_tipo">Tipo:</string>
+    <string name="card_tipo_value">Perro</string>
+    <string name="card_image_description">Imagen de la mascota</string>
 </resources>

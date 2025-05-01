@@ -12,36 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31" >
-        <activity
-            android:name=".registromascota.RegistroMascota"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".tipoMascotasBottoms.TipoMascotaBottoms"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".TipoMascota"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true"
-            android:label="@string/title_activity_tipo_mascota"
-            android:theme="@style/Theme.PetTrack.Fullscreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activitypettrack.PetTrackActivity"
             android:exported="true"
