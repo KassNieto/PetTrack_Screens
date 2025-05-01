@@ -2,15 +2,25 @@ package com.pettrack.pettrack.activitypettrack.ui.slideshow.Adapter;
 
 public class Mascotas {
     private int id;
+    private String imagen;
     private String nombre;
     private String edad;
     private String tipo;
 
-    public Mascotas(int id, String nombre, String edad, String tipo) {
+    public Mascotas(int id, String imagen, String nombre, String edad, String tipo) {
         this.id = id;
+        this.imagen = imagen;
         this.nombre = nombre;
         this.edad = edad;
         this.tipo = tipo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public Mascotas(int id) {
@@ -53,6 +63,7 @@ public class Mascotas {
     public String toString() {
         return "Mascotas{" +
                 "id=" + id +
+                ", imagen='" + imagen + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", edad='" + edad + '\'' +
                 ", tipo='" + tipo + '\'' +

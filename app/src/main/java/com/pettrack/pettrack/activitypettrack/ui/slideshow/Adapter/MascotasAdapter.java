@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.pettrack.pettrack.R;
 
 import java.util.List;
@@ -33,11 +34,30 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNombre.setText(mascotaList.get(position).getNombre());
-        holder.txtEdadValue.setText(mascotaList.get(position).getEdad());
-        holder.txtTipoValue.setText(mascotaList.get(position).getTipo());
-    }
+        Mascotas mascota = mascotaList.get(position);
 
+        // Cargar imagen si existe
+        if (mascota.getImagen() != null && !mascota.getImagen().isEmpty()) {
+            try {
+                int drawableId = context.getResources().getIdentifier(
+                        mascota.getImagen(),
+                        "drawable",
+                        context.getPackageName());
+
+                if (drawableId != 0) {
+                    Glide.with(context)
+                            .load(drawableId)
+                            .into(holder.cardImg); // Asume que tienes un ImageView llamado cardIcon
+                }
+            } catch (Exception e) {
+                // Manejar error si es necesario
+            }
+        }
+
+        holder.txtNombre.setText(mascota.getNombre() != null ? mascota.getNombre() : "");
+        holder.txtEdadValue.setText(mascota.getEdad() != null ? mascota.getEdad() : "");
+        holder.txtTipoValue.setText(mascota.getTipo() != null ? mascota.getTipo() : "");
+    }
     @Override
     public int getItemCount() {
         return mascotaList.size();
