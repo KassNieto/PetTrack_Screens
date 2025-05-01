@@ -1,4 +1,4 @@
-package com.pettrack.pettrack;
+package com.pettrack.pettrack.registromascota;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class TipoMascotaBottoms extends AppCompatActivity {
+import com.pettrack.pettrack.R;
+
+public class RegistroMascota extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_tipo_mascota_bottoms);
+        setContentView(R.layout.activity_registro_mascota);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
