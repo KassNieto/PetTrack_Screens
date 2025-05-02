@@ -1,5 +1,6 @@
 package com.pettrack.pettrack.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
 import com.pettrack.pettrack.models.LoginRequest;
 import com.pettrack.pettrack.models.LoginResponse;
+import com.pettrack.pettrack.signup.SignUp;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +28,7 @@ import retrofit2.Response;
 public class Login extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
-    private Button loginButton;
+    private Button loginButton, registerButton;
     private ApiService apiService;
 
     @Override
@@ -46,6 +48,7 @@ public class Login extends AppCompatActivity {
         emailEditText = findViewById(R.id.addCorreoLog);
         passwordEditText = findViewById(R.id.addContra);
         loginButton = findViewById(R.id.btnIngresar);
+        registerButton = findViewById(R.id.btnRegistrar); // Asegúrate de que este ID coincida con tu XML
 
         // Inicializar Retrofit
         apiService = ApiClient.getClient().create(ApiService.class);
@@ -57,6 +60,27 @@ public class Login extends AppCompatActivity {
                 attemptLogin();
             }
         });
+
+        // Configurar el click listener para el botón de registrar
+        registerButton = findViewById(R.id.btnRegistrar);
+        registerButton = findViewById(R.id.btnRegistrar);
+
+        if (registerButton == null) {
+            Toast.makeText(this, "btnRegistrar es null. Verifica el layout", Toast.LENGTH_LONG).show();
+        } else {
+            registerButton.setOnClickListener(v -> {
+                Toast.makeText(Login.this, "Click detectado", Toast.LENGTH_SHORT).show();
+                goToSignUp();
+            });
+        }
+
+
+    }
+
+    private void goToSignUp() {
+        Intent intent = new Intent(Login.this, SignUp.class);
+        startActivity(intent);
+        finish();
     }
 
     private void attemptLogin() {
