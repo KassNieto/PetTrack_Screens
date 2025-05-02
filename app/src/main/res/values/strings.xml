@@ -11,4 +11,31 @@
     <string name="menu_mi_perfil">Mi Perfil</string>
     <string name="menu_mis_mascotas">Mis Mascotas</string>
     <string name="menu_calendario">Calendario</string>
+    <string name="title_activity_tipo_mascota">TipoMascota</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_tipo_mascota">¿Qué tipo es tu mascota?</string>
+
+    <string name="card_nombre_mascota">Darketa</string>
+    <string name="card_edad">Edad:</string>
+    <string name="card_edad_value">3 años </string>
+    <string name="card_tipo">Tipo:</string>
+    <string name="card_tipo_value">Perro</string>
+    <string name="card_image_description">Imagen de la mascota</string>
+
+
+        <string name="mi_cuenta_titulo">Mi Cuenta</string>
+        <string name="nombres_label">Nombre(s)</string>
+        <string name="apellidos_label">Apellidos</string>
+        <string name="telefono_label">Número de contacto</string>
+        <string name="fecha_nacimiento_label">Fecha de nacimiento</string>
+        <string name="correo_label">Correo</string>
+
+        <!-- Valores (ejemplo) -->
+        <string name="nombres_valor">Uzziel Yered</string>
+        <string name="apellidos_valor">De Contreras González</string>
+        <string name="telefono_valor">987-65-43-210</string>
+        <string name="fecha_nacimiento_valor">8 de octubre de 2024</string>
+        <string name="correo_valor">uzzielitomix@matalospapi.com</string>
 </resources>
