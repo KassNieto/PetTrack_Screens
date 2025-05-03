@@ -2,12 +2,17 @@ package com.pettrack.pettrack.api;
 
 import com.pettrack.pettrack.models.LoginRequest;
 import com.pettrack.pettrack.models.LoginResponse;
+import com.pettrack.pettrack.models.signup.RegisterRequest;
+import com.pettrack.pettrack.models.signup.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
-    @POST("usuarios/login") // Ajusta este endpoint según tu API
+    @POST("usuarios/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
+
+    @POST("usuarios") // Endpoint para registro
+    Call<ApiResponse> registerUser(@Body RegisterRequest registerRequest);
 }
