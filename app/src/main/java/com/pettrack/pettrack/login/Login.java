@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.pettrack.pettrack.MainActivity;
 import com.pettrack.pettrack.R;
+import com.pettrack.pettrack.activitypettrack.PetTrackActivity;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
 import com.pettrack.pettrack.models.LoginRequest;
@@ -132,7 +133,7 @@ public class Login extends AppCompatActivity {
 
         // Redirigir al MainActivity (o pantalla principal)
         Toast.makeText(this, "Login exitoso!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PetTrackActivity.class);
         startActivity(intent);
         finish(); // Cierra la actividad de login para no volver atrás
     }

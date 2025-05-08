@@ -30,6 +30,8 @@
         <activity
             android:name=".signup.SignUp"
             android:exported="true" />
+        <activity android:name=".activitypettrack.PetTrackActivity" />
+
 
         <!-- MainActivity ya no es la actividad principal -->
         <activity
