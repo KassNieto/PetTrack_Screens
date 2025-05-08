@@ -17,7 +17,7 @@ android {
         buildConfigField(
             "String",
             "API_PETTRACK_URL",
-            "\"${project.findProperty("API_PETTRACK_URL") ?: "http://54.81.28.26:8080/"}\""
+            "\"${project.findProperty("API_PETTRACK_URL") ?: "http://52.54.155.16:8080/"}\""
         )    }
 
     buildTypes {

@@ -1,6 +1,8 @@
 package com.pettrack.pettrack.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.pettrack.pettrack.MainActivity;
 import com.pettrack.pettrack.R;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
@@ -105,7 +108,6 @@ public class Login extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
                     handleSuccessfulLogin(loginResponse);
                 } else {
-                    // Error en el login
                     Toast.makeText(Login.this, "Error en el login: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -120,11 +122,18 @@ public class Login extends AppCompatActivity {
     }
 
     private void handleSuccessfulLogin(LoginResponse loginResponse) {
-        // Guardar el token de autenticación (usando SharedPreferences o similar)
-        // Redirigir a la actividad principal
+        // Guardar el ID y token usando SharedPreferences
+        SharedPreferences sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        // Asume que loginResponse tiene métodos como getUserId() y getToken()
+        editor.putString("user_id", loginResponse.getUserId()); // Guarda el ID del usuario
+        editor.apply(); // ¡Aplicar los cambios!
+
+        // Redirigir al MainActivity (o pantalla principal)
         Toast.makeText(this, "Login exitoso!", Toast.LENGTH_SHORT).show();
-        // Intent intent = new Intent(this, MainActivity.class);
-        // startActivity(intent);
-        // finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Cierra la actividad de login para no volver atrás
     }
 }

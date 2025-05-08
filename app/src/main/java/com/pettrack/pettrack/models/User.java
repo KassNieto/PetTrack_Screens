@@ -8,4 +8,13 @@ public class User {
     private String email;
 
     // Getters y setters
+    // Getter para el ID
+    public String getId() {
+        return id;
+    }
+
+    // Setter (opcional, dependiendo de tu caso)
+    public void setId(String id) {
+        this.id = id;
+    }
 }

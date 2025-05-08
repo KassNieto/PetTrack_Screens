@@ -1,6 +1,9 @@
 package com.pettrack.pettrack.signup;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +14,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
+import com.pettrack.pettrack.MainActivity;
 import com.pettrack.pettrack.R;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
+import com.pettrack.pettrack.models.User;
 import com.pettrack.pettrack.models.signup.RegisterRequest;
 import com.pettrack.pettrack.models.signup.ApiResponse;
 
@@ -145,7 +150,7 @@ public class SignUp extends AppCompatActivity {
                 try {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().isSuccess()) {
-                            registroExitoso();
+                            registroExitoso(response.body()); // <---- CORREGIDO AQUÍ
                         } else {
                             String errorBody = response.errorBody() != null ?
                                     response.errorBody().string() : "Error desconocido";
@@ -169,6 +174,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
     private boolean validarCampos(String... campos) {
         for (String campo : campos) {
             if (campo.isEmpty()) {
@@ -196,9 +202,29 @@ public class SignUp extends AppCompatActivity {
         // Implementa un ProgressDialog o similar
     }
 
-    private void registroExitoso() {
-        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-        finish();
+    private void registroExitoso(ApiResponse response) {
+        // Verificar que la respuesta y los datos sean válidos
+        if (response != null && response.isSuccess() && response.getData() != null) {
+            User user = response.getData();
+
+            // Guardar solo el user_id en SharedPreferences
+            SharedPreferences sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            if (user.getId() != null) {  // Asume que User tiene un método getId()
+                editor.putString("user_id", user.getId());
+                editor.apply(); // ¡Importante aplicar los cambios!
+
+                // Redirigir a MainActivity
+                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Error: ID de usuario no recibido", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Error en el registro: " + (response != null ? response.getMessage() : ""), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void mostrarError(String mensaje) {
