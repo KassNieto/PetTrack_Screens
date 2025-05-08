@@ -3,18 +3,20 @@
 package com.pettrack.pettrack.models;
 
 public class User {
-    private String id;
-    private String name;
-    private String email;
+    private Integer id;
+    private String nombre;
+    private String apellidos;
+    private String fechaNacimiento;
+    private String numero;
+    private String correoElectronico;
+    private String contrasena;
 
-    // Getters y setters
-    // Getter para el ID
-    public String getId() {
-        return id;
-    }
-
-    // Setter (opcional, dependiendo de tu caso)
-    public void setId(String id) {
-        this.id = id;
-    }
+    // Getters y Setters
+    public Integer getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getApellidos() { return apellidos; }
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public String getNumero() { return numero; }
+    public String getCorreoElectronico() { return correoElectronico; }
+    // ... setters si los necesitas
 }

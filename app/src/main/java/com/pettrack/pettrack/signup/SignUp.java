@@ -212,7 +212,7 @@ public class SignUp extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPref.edit();
 
             if (user.getId() != null) {  // Asume que User tiene un método getId()
-                editor.putString("user_id", user.getId());
+                editor.putInt("user_id", user.getId());
                 editor.apply(); // ¡Importante aplicar los cambios!
 
                 // Redirigir a MainActivity

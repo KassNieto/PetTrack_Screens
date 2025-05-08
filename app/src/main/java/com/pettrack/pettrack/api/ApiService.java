@@ -2,12 +2,15 @@ package com.pettrack.pettrack.api;
 
 import com.pettrack.pettrack.models.LoginRequest;
 import com.pettrack.pettrack.models.LoginResponse;
+import com.pettrack.pettrack.models.User;
 import com.pettrack.pettrack.models.signup.RegisterRequest;
 import com.pettrack.pettrack.models.signup.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
     @POST("/usuarios/login")
@@ -15,4 +18,7 @@ public interface ApiService {
 
     @POST("/usuarios") // Endpoint para registro
     Call<ApiResponse> registerUser(@Body RegisterRequest registerRequest);
+
+    @GET("usuarios/{id}")
+    Call<User> getUserById(@Path("id") int userId); // Cambiado a int
 }
