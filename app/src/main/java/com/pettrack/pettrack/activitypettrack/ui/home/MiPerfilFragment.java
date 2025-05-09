@@ -88,3 +88,4 @@ public class MiPerfilFragment extends Fragment {
         binding = null;
     }
 }
+

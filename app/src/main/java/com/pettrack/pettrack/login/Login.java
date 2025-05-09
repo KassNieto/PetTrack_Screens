@@ -127,8 +127,7 @@ public class Login extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        // Asume que loginResponse tiene métodos como getUserId() y getToken()
-        editor.putString("user_id", loginResponse.getUserId()); // Guarda el ID del usuario
+        editor.putInt("user_id", loginResponse.getUserId()); // Guarda el ID del usuario
         editor.apply(); // ¡Aplicar los cambios!
 
         // Redirigir al MainActivity (o pantalla principal)
