@@ -2,9 +2,12 @@ package com.pettrack.pettrack.api;
 
 import com.pettrack.pettrack.models.LoginRequest;
 import com.pettrack.pettrack.models.LoginResponse;
+import com.pettrack.pettrack.models.Mascota;
 import com.pettrack.pettrack.models.User;
 import com.pettrack.pettrack.models.signup.RegisterRequest;
 import com.pettrack.pettrack.models.signup.ApiResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,4 +24,7 @@ public interface ApiService {
 
     @GET("usuarios/{id}")
     Call<User> getUserById(@Path("id") int userId); // Cambiado a int
+
+    @GET("usuarios/{id}/mascotas")
+    Call<List<Mascota>> getMascotasByUsuarioId(@Path("id") int usuarioId);
 }
