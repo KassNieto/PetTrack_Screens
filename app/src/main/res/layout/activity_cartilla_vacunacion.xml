@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Título arriba -->
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cartilla de Vacunación"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF3A3A3A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- Scroll con tablas centradas -->
+    <ScrollView
+        android:id="@+id/scrollTablas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
+        app:layout_constraintBottom_toTopOf="@id/btnAgregar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Sección Vacunación -->
+            <TextView
+                android:id="@+id/txtVacunacion"
+                android:text="Vacunación"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TableLayout
+                android:id="@+id/tableVacunas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:background="#EEE"
+                android:padding="8dp">
+
+                <TableRow>
+                    <TextView android:text="Fecha" android:textStyle="bold"/>
+                    <TextView android:text="Vacuna" android:textStyle="bold"/>
+                    <TextView android:text="Próxima" android:textStyle="bold"/>
+                </TableRow>
+            </TableLayout>
+
+            <!-- Sección Desparasitación -->
+            <TextView
+                android:id="@+id/txtDesparasitacion"
+                android:text="Desparasitación"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TableLayout
+                android:id="@+id/tableDesparasitacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:background="#EEE"
+                android:padding="8dp">
+
+                <TableRow>
+                    <TextView android:text="Fecha" android:textStyle="bold"/>
+                    <TextView android:text="Peso (Kg)" android:textStyle="bold"/>
+                    <TextView android:text="Dosis" android:textStyle="bold"/>
+                    <TextView android:text="Próxima" android:textStyle="bold"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botón flotante abajo -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Agregar"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        app:backgroundTint="#F88349" />
+</androidx.constraintlayout.widget.ConstraintLayout>
