@@ -17,6 +17,7 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
 
+        <!-- Pantalla Principal -->
         <activity
             android:name=".login.Login"
             android:exported="true">
@@ -30,12 +31,21 @@
             android:name=".signup.SignUp"
             android:exported="true" />
 
-
         <activity
             android:name=".MainActivity"
             android:exported="true" />
 
-        <activity android:name=".historialmedico.HistorialMedico" android:exported="true"/>
+        <activity
+            android:name=".historialmedico.HistorialMedico"
+            android:exported="true" />
+
+        <activity
+            android:name=".cartillavacunacion.AgregarVacuna"
+            android:exported="true" />
+
+        <activity android:name=".cartillavacunacion.AgregarDesparasitacion"
+            android:exported="true" />
+
 
     </application>
 
