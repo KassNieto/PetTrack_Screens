@@ -2,12 +2,12 @@
 package com.pettrack.pettrack.models;
 
 public class LoginRequest {
-    private String email;
-    private String password;
+    private String correoElectronico;
+    private String contrasena;
 
-    public LoginRequest(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public LoginRequest(String correoElectronico, String contrasena) {
+        this.correoElectronico = correoElectronico;
+        this.contrasena = contrasena;
     }
 
     // Getters y setters

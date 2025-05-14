@@ -17,7 +17,7 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
 
-        <!-- LoginActivity ahora es la actividad principal -->
+        <!-- Pantalla Principal -->
         <activity
             android:name=".login.Login"
             android:exported="true">
@@ -30,11 +30,25 @@
         <activity
             android:name=".signup.SignUp"
             android:exported="true" />
+        <activity android:name=".activitypettrack.PetTrackActivity" />
 
-        <!-- MainActivity ya no es la actividad principal -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".historialmedico.HistorialMedico"
+            android:exported="true" />
+
+        <activity
+            android:name=".cartillavacunacion.AgregarVacuna"
+            android:exported="true" />
+
+        <activity android:name=".cartillavacunacion.AgregarDesparasitacion"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>
