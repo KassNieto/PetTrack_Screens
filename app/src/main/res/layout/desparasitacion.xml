@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarVac"
+        android:id="@+id/toolbarDes"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#F88349"
@@ -15,92 +15,112 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/Theme.PetTrack.PopupOverlay" />
 
-    <!-- Fecha de aplicación -->
     <TextView
-        android:id="@+id/txtFAplicacionVac"
+        android:id="@+id/txtFAplicacionDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="174dp"
-        android:layout_marginEnd="198dp"
-        android:text="Fecha Aplicación"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp"
+        android:text="Fecha de aplicación"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarVac" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDes" />
 
     <EditText
-        android:id="@+id/addFAplicacionVac"
+        android:id="@+id/addFAplicacionDes"
         android:layout_width="275dp"
         android:layout_height="48dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:hint="Fecha de Aplicación"
+        android:hint="Fecha de aplicación"
         android:inputType="date"
         android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@+id/txtFAplicacionVac"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFAplicacionDes" />
 
-    <!-- Próxima aplicación -->
     <TextView
-        android:id="@+id/txtPrxAplicacionVac"
+        android:id="@+id/txtPrxAplicacionDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="25dp"
-        android:text="Próxima aplicación"
-        app:layout_constraintTop_toBottomOf="@+id/addFAplicacionVac"
+        android:text="Próxima Aplicación"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addFAplicacionDes" />
 
     <EditText
-        android:id="@+id/addPrxAplicacionVac"
+        android:id="@+id/addPrxAplicacionDes"
         android:layout_width="275dp"
         android:layout_height="48dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="Fecha de próxima aplicación"
         android:inputType="date"
         android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrxAplicacionVac"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrxAplicacionDes" />
 
-    <!-- Tipo de vacuna (campo de texto editable) -->
     <TextView
-        android:id="@+id/txtTipoDeVac"
+        android:id="@+id/txtDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="25dp"
-        android:text="Tipo de vacuna"
-        app:layout_constraintTop_toBottomOf="@+id/addPrxAplicacionVac"
+        android:text="Dosis"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addPrxAplicacionDes" />
 
     <EditText
-        android:id="@+id/addTipoVac"
+        android:id="@+id/addDosis"
         android:layout_width="275dp"
         android:layout_height="48dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
-        android:hint="Escribe el tipo de vacuna"
+        android:ems="10"
+        android:hint="Dosis de la vacuna"
+        android:inputType="numberDecimal"
         android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@+id/txtTipoDeVac"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDosis" />
 
-    <!-- Botón guardar -->
-    <Button
-        android:id="@+id/btnGuardarVac"
+    <TextView
+        android:id="@+id/txtPesoDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="25dp"
+        android:text="Peso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDosis" />
+
+    <EditText
+        android:id="@+id/addPesoDes"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Peso de la mascota"
+        android:inputType="numberDecimal"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPesoDes" />
+
+    <Button
+        android:id="@+id/btnGuardarDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
         android:layout_marginTop="52dp"
         android:backgroundTint="#F88349"
         android:text="Guardar"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/addTipoVac"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addPesoDes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
