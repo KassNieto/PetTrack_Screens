@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".cartillavacunacion.CartillaVacunacion">
 
-
-    <!-- Título arriba -->
+    <!-- Título principal -->
     <TextView
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
@@ -20,41 +21,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp" />
 
-    <!-- Scroll con tablas centradas -->
+    <!-- Scroll con las dos secciones -->
     <ScrollView
         android:id="@+id/scrollTablas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/txtTitulo"
-        app:layout_constraintBottom_toTopOf="@id/btnAgregar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp">
+        android:layout_marginBottom="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Sección Vacunación -->
-            <TextView
-                android:id="@+id/txtVacunacion"
+            <!-- Botón Vacunación -->
+            <Button
+                android:id="@+id/btnVacunacion"
                 android:text="Vacunación"
+                android:layout_marginTop="30dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#333333"
-                android:layout_width="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <!-- Tabla Vacunas -->
             <TableLayout
                 android:id="@+id/tableVacunas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="*"
                 android:background="#EEE"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_marginTop="8dp">
 
                 <TableRow>
                     <TextView android:text="Fecha" android:textStyle="bold"/>
@@ -63,26 +69,27 @@
                 </TableRow>
             </TableLayout>
 
-            <!-- Sección Desparasitación -->
-            <TextView
-                android:id="@+id/txtDesparasitacion"
+            <!-- Botón Desparasitación -->
+            <Button
+                android:id="@+id/btnDesparasitacion"
                 android:text="Desparasitación"
+                android:layout_marginTop="50dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#333333"
-                android:layout_width="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-
+            <!-- Tabla Desparasitación -->
             <TableLayout
                 android:id="@+id/tableDesparasitacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="*"
                 android:background="#EEE"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_marginTop="8dp">
 
                 <TableRow>
                     <TextView android:text="Fecha" android:textStyle="bold"/>
@@ -94,16 +101,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Botón flotante abajo -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAgregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Agregar"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"
-        app:backgroundTint="#F88349" />
 </androidx.constraintlayout.widget.ConstraintLayout>
