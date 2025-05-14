@@ -28,6 +28,7 @@
             android:id="@+id/txt_nombre_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="24dp"
             android:text="Nombre"
             android:textSize="16sp"
@@ -36,11 +37,16 @@
 
         <EditText
             android:id="@+id/edit_nombre_mascota"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese el nombre"
-            android:inputType="text"
+            android:layout_width="275dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/nombre_mascota"
+            android:inputType="date"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_nombre_mascota" />
@@ -50,6 +56,7 @@
             android:id="@+id/txt_sexo_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Sexo"
             android:textSize="16sp"
@@ -84,6 +91,7 @@
             android:id="@+id/txt_raza_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Raza"
             android:textSize="16sp"
@@ -92,11 +100,16 @@
 
         <EditText
             android:id="@+id/edit_raza_mascota"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese la raza"
-            android:inputType="text"
+            android:layout_width="275dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/raza_mascota"
+            android:inputType="date"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_raza_mascota" />
@@ -106,6 +119,7 @@
             android:id="@+id/txt_edad_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Edad"
             android:textSize="16sp"
@@ -114,11 +128,18 @@
 
         <EditText
             android:id="@+id/edit_edad_mascota"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese la edad"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/edad_mascota"
             android:inputType="number"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_edad_mascota" />
 
         <!-- Color -->
@@ -126,6 +147,7 @@
             android:id="@+id/txt_color_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Color"
             android:textSize="16sp"
@@ -134,11 +156,18 @@
 
         <EditText
             android:id="@+id/edit_color_mascota"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese el color"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/color_mascota"
             android:inputType="text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_color_mascota" />
 
         <!-- Peso -->
@@ -146,6 +175,7 @@
             android:id="@+id/txt_peso_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Peso"
             android:textSize="16sp"
@@ -154,11 +184,18 @@
 
         <EditText
             android:id="@+id/edit_peso_mascota"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese el peso (kg)"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/peso_mascota"
             android:inputType="numberDecimal"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_peso_mascota" />
 
         <!-- Señas particulares -->
@@ -166,6 +203,7 @@
             android:id="@+id/txt_senyas_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Señas Particulares"
             android:textSize="16sp"
@@ -174,12 +212,18 @@
 
         <EditText
             android:id="@+id/edit_senyas_mascota"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:gravity="top"
-            android:hint="Describa las señas particulares"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/descripcion_mascota"
             android:inputType="textMultiLine"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_senyas_mascota" />
 
         <!-- Foto de perfil -->
@@ -187,6 +231,7 @@
             android:id="@+id/txt_foto_mascota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="16dp"
             android:text="Foto de perfil"
             android:textSize="16sp"
@@ -208,8 +253,11 @@
             android:id="@+id/btn_seleccionar_foto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Seleccionar foto"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="#F88349"
+            android:text="@string/seleccionar_foto"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_mascota" />
@@ -217,13 +265,15 @@
         <!-- Botón Agregar -->
         <Button
             android:id="@+id/btn_agregar_mascota"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="Agregar mascota"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="#F88349"
+            android:text="@string/agregar"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_seleccionar_foto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

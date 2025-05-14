@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:text="+ Añadir"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textColor="?attr/colorPrimary" />
+                    android:textColor="#F88349" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:text="+ Añadir"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textColor="?attr/colorPrimary" />
+                    android:textColor="#F88349" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

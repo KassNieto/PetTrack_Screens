@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="95dp"
         android:layout_marginTop="21dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="text"
-        android:text=" "
+        android:hint="@string/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
@@ -23,9 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="text"
-        android:text=" "
+        android:hint="@string/apellidos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtApellido" />
 
@@ -36,6 +38,7 @@
         android:layout_marginStart="164dp"
         android:layout_marginTop="56dp"
         android:text="Signup"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="87dp"
         android:layout_marginTop="22dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="95dp"
         android:layout_marginTop="25dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="22dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="79dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
@@ -145,10 +152,13 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="835dp" />
+        android:layout_width="126dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="144dp"
+        android:backgroundTint="#F88349"
+        android:text="@string/registrar"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="806dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

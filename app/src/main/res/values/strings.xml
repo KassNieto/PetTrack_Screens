@@ -57,4 +57,20 @@
     <string name="guardar">Guardar</string>
     <string name="indicaciones">Selecciona el boton \"+\" para subir los archivos pdf necesarios de tu mascota</string>
     <string name="mas">+</string>
+    <string name="nombre_mascota">Nombre de la mascota</string>
+    <string name="raza_mascota">Raza de la mascota</string>
+    <string name="edad_mascota">Edad de la mascota</string>
+    <string name="color_mascota">Color de la mascota</string>
+    <string name="peso_mascota">Peso de la mascota</string>
+    <string name="descripcion_mascota">Descripción de la mascota</string>
+    <string name="seleccionar_foto">Seleccionar Foto</string>
+    <string name="agregar">Agregar</string>
+    <string name="selecc_fecha">Seleccione unafecha</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="registrar">Registrar</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="escribe_tu_contrase_a">Escribe tu contraseña</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="escribe_correo_electronico">Escribe tu correo electronico</string>
 </resources>
