@@ -160,8 +160,8 @@
         android:id="@+id/txtTipoEv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="72dp"
         android:text="@string/tipo_evento"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMascota" />
