@@ -47,7 +47,7 @@
 
         <activity android:name=".cartillavacunacion.AgregarDesparasitacion"
             android:exported="true" />
-
+        <activity android:name=".registromascota.RegistroMascota" />
 
     </application>
 

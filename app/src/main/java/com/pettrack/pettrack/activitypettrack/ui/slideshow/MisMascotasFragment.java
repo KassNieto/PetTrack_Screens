@@ -1,6 +1,7 @@
 package com.pettrack.pettrack.activitypettrack.ui.slideshow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
 import com.pettrack.pettrack.databinding.FragmentMisMascotasBinding;
 import com.pettrack.pettrack.models.Mascota;
+import com.pettrack.pettrack.registromascota.RegistroMascota;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 public class MisMascotasFragment extends Fragment {
     private RecyclerView recyclerMascotas;
     private TextView txtNoMascotas;
@@ -43,12 +46,22 @@ public class MisMascotasFragment extends Fragment {
 
         // Inicializar vistas
         recyclerMascotas = binding.recyclerViewMascotas;
-        txtNoMascotas = binding.txtNoMascotas; // Asegúrate de que este ID existe en tu binding
+        txtNoMascotas = binding.txtNoMascotas;
 
         // Configurar RecyclerView
         recyclerMascotas.setLayoutManager(new LinearLayoutManager(getContext()));
         mascotasAdapter = new MascotasAdapter(mascotasList, getActivity());
         recyclerMascotas.setAdapter(mascotasAdapter);
+
+        // Configurar el botón de agregar mascota
+        binding.btnAgregarMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Iniciar la actividad de registro de mascota
+                Intent intent = new Intent(getActivity(), RegistroMascota.class);
+                startActivity(intent);
+            }
+        });
 
         // Cargar mascotas
         cargarMascotas();
@@ -56,8 +69,14 @@ public class MisMascotasFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Recargar las mascotas cuando el fragment vuelva a ser visible
+        cargarMascotas();
+    }
+
     private void cargarMascotas() {
-        // Simulación de carga de datos (reemplaza con tu llamada real a la API)
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<List<Mascota>> call = apiService.getMascotasByUsuarioId(obtenerUserId());
 
