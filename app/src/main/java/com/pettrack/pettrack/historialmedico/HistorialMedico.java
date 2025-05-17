@@ -38,7 +38,8 @@ public class HistorialMedico extends AppCompatActivity {
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedFileUri = data.getData();
             if (selectedFileUri != null) {
-                // Aquí se puede subir al servidor o a la base de datos en la nube
+
+
                 Toast.makeText(this, "Archivo seleccionado: " + selectedFileUri.getPath(), Toast.LENGTH_SHORT).show();
             }
         }

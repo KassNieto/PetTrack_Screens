@@ -54,7 +54,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:hint="Escribe tu correo electronico"
+        android:hint="@string/escribe_correo_electronico"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         android:textSize="13sp"
@@ -68,9 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="28dp"
-        android:text="Contraseña"
+        android:text="@string/contrase_a"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCorreoLog" />
+        app:layout_constraintTop_toBottomOf="@+id/addCorreoLog"
+        tools:ignore="HardcodedText" />
 
     <!-- Apartado para ingresar Contra -->
     <EditText
@@ -81,7 +82,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:hint="Escribe tu contraseña"
+        android:hint="@string/escribe_tu_contrase_a"
         android:inputType="textPassword"
         android:padding="12dp"
         android:textSize="13sp"
@@ -96,7 +97,7 @@
         android:layout_marginStart="140dp"
         android:layout_marginTop="36dp"
         android:backgroundTint="#F88349"
-        android:text="Ingresar"
+        android:text="@string/ingresar"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addContra" />
