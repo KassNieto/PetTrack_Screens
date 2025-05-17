@@ -9,10 +9,14 @@ import com.pettrack.pettrack.models.signup.ApiResponse;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -27,4 +31,18 @@ public interface ApiService {
 
     @GET("usuarios/{id}/mascotas")
     Call<List<Mascota>> getMascotasByUsuarioId(@Path("id") int usuarioId);
+
+    @Multipart
+    @POST("usuarios/{usuarioId}/mascotas/con-imagen")
+    Call<Mascota> crearMascotaConImagen(
+            @Path("usuarioId") int usuarioId,
+            @Part("mascota") RequestBody mascota,
+            @Part MultipartBody.Part foto
+    );
+
+    @GET("usuarios/{userId}/mascotas/{mascotaId}")
+    Call<Mascota> getMascotaById(
+            @Path("userId") int userId,
+            @Path("mascotaId") int mascotaId
+    );
 }

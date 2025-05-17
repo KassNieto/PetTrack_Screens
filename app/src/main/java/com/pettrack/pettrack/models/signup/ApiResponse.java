@@ -5,31 +5,26 @@ import com.pettrack.pettrack.models.User;
 public class ApiResponse {
     private boolean success;
     private String message;
-    private User data; // Reutilizando tu clase User existente
+    private int id;  // Nuevo campo para el ID
+    private String nombre;
+    private String apellidos;
+    private String fechaNacimiento;
+    private String numero;
+    private String correoElectronico;
+    private String contrasena;
 
-    // Getters
+    // Getters y setters
     public boolean isSuccess() {
         return success;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public User getData() {
-        return data;
-    }
-
-    // Setters
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public void setData(User data) {
-        this.data = data;
-    }
+    // ... otros getters
 }

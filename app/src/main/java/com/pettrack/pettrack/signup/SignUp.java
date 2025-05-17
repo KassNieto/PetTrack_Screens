@@ -1,6 +1,7 @@
 package com.pettrack.pettrack.signup;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.pettrack.pettrack.MainActivity;
 import com.pettrack.pettrack.R;
+import com.pettrack.pettrack.activitypettrack.PetTrackActivity;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
 import com.pettrack.pettrack.models.User;
@@ -37,6 +39,7 @@ public class SignUp extends AppCompatActivity {
     private ApiService apiService;
     private Calendar calendar;
     private SimpleDateFormat dateFormatter;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,13 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         // Formateador de fecha
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()); // Formato ISO para la API
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         calendar = Calendar.getInstance();
+
+        // Inicializar ProgressDialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registrando...");
+        progressDialog.setCancelable(false);
 
         // Inicializar Retrofit
         apiService = ApiClient.getClient().create(ApiService.class);
@@ -73,12 +81,10 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void setupDatePicker() {
-        // Evitar que el teclado aparezca para el campo de fecha
         etFechaNacimiento.setShowSoftInputOnFocus(false);
 
         etFechaNacimiento.setOnClickListener(v -> showDatePicker());
 
-        // Esto permite que el campo reciba clicks pero no entrada de teclado
         etFechaNacimiento.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
                 showDatePicker();
@@ -94,7 +100,6 @@ public class SignUp extends AppCompatActivity {
                     calendar.set(Calendar.MONTH, month);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                    // Formatear la fecha como string y mostrarla
                     String fecha = dateFormatter.format(calendar.getTime());
                     etFechaNacimiento.setText(fecha);
                 },
@@ -103,13 +108,11 @@ public class SignUp extends AppCompatActivity {
                 calendar.get(Calendar.DAY_OF_MONTH)
         );
 
-        // Establecer fecha máxima (hoy)
         datePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePicker.show();
     }
 
     private void registrarUsuario() {
-        // Obtener los valores de los campos
         String nombre = etNombre.getText().toString().trim();
         String apellidos = etApellido.getText().toString().trim();
         String fechaNacimiento = etFechaNacimiento.getText().toString().trim();
@@ -117,52 +120,59 @@ public class SignUp extends AppCompatActivity {
         String correoElectronico = etEmail.getText().toString().trim();
         String contrasena = etContrasena.getText().toString().trim();
 
-        // Debug: Verificar valores antes de enviar
-        Log.d("FORM_DATA", "Email: " + correoElectronico);
-        Log.d("FORM_DATA", "Fecha: " + fechaNacimiento);
-
-        // Validar campos
         if (!validarCampos(nombre, apellidos, fechaNacimiento, numero, correoElectronico, contrasena)) {
             return;
         }
 
-        // Crear objeto RegisterRequest
         RegisterRequest registerRequest = new RegisterRequest(
                 nombre,
                 apellidos,
                 fechaNacimiento,
                 numero,
-                correoElectronico, // camelCase
+                correoElectronico,
                 contrasena);
 
-        // Mostrar progreso
         mostrarCargando(true);
 
-        // Debug: Ver el JSON que se enviará
-        Gson gson = new Gson();
-        Log.d("REQUEST_JSON", gson.toJson(registerRequest));
-
-        // Realizar la llamada a la API
         apiService.registerUser(registerRequest).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 mostrarCargando(false);
-                try {
-                    if (response.isSuccessful()) {
-                        if (response.body() != null && response.body().isSuccess()) {
-                            registroExitoso(response.body()); // <---- CORREGIDO AQUÍ
-                        } else {
-                            String errorBody = response.errorBody() != null ?
-                                    response.errorBody().string() : "Error desconocido";
-                            mostrarError("Error en el registro: " + errorBody);
-                            Log.e("API_ERROR", errorBody);
+
+                if (response.isSuccessful() && response.body() != null) {
+                    ApiResponse apiResponse = response.body();
+                        try {
+                            // Obtener el ID directamente del objeto ApiResponse
+                            int userId = apiResponse.getId(); // Asumiendo que ApiResponse tiene un campo id
+
+                            // Guardar el ID del usuario en SharedPreferences
+                            SharedPreferences sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt("user_id", userId);
+                            editor.apply();
+
+                            // Redirigir a PetTrackActivity
+                            Toast.makeText(SignUp.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SignUp.this, PetTrackActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+
+                        } catch (Exception e) {
+                            Log.e("REGISTRO", "Error al procesar respuesta", e);
+                            mostrarError("Error al procesar los datos del usuario");
                         }
-                    } else {
-                        mostrarError("Error HTTP: " + response.code());
+
+                } else {
+                    try {
+                        String errorBody = response.errorBody() != null ?
+                                response.errorBody().string() : "Error desconocido";
+                        mostrarError("Error: " + errorBody);
+                        Log.e("API_ERROR", "Error en la respuesta: " + errorBody);
+                    } catch (IOException e) {
+                        mostrarError("Error al procesar la respuesta");
+                        Log.e("API_ERROR", "Error procesando respuesta", e);
                     }
-                } catch (IOException e) {
-                    mostrarError("Error procesando respuesta: " + e.getMessage());
-                    e.printStackTrace();
                 }
             }
 
@@ -170,60 +180,52 @@ public class SignUp extends AppCompatActivity {
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 mostrarCargando(false);
                 mostrarError("Error de conexión: " + t.getMessage());
-                t.printStackTrace();
+                Log.e("API_CALL", "Error en la llamada API", t);
             }
         });
     }
 
     private boolean validarCampos(String... campos) {
-        for (String campo : campos) {
-            if (campo.isEmpty()) {
-                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+        if (campos[0].isEmpty()) {
+            etNombre.setError("Nombre requerido");
+            return false;
         }
-
-        // Validación adicional del email
+        if (campos[1].isEmpty()) {
+            etApellido.setError("Apellido requerido");
+            return false;
+        }
+        if (campos[2].isEmpty()) {
+            etFechaNacimiento.setError("Fecha de nacimiento requerida");
+            return false;
+        }
+        if (campos[3].isEmpty()) {
+            etTelefono.setError("Teléfono requerido");
+            return false;
+        }
+        if (campos[4].isEmpty()) {
+            etEmail.setError("Email requerido");
+            return false;
+        }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(campos[4]).matches()) {
             etEmail.setError("Email inválido");
             return false;
         }
-
-        // Validación de contraseña (mínimo 6 caracteres)
+        if (campos[5].isEmpty()) {
+            etContrasena.setError("Contraseña requerida");
+            return false;
+        }
         if (campos[5].length() < 6) {
             etContrasena.setError("La contraseña debe tener al menos 6 caracteres");
             return false;
         }
-
         return true;
     }
 
     private void mostrarCargando(boolean mostrar) {
-        // Implementa un ProgressDialog o similar
-    }
-
-    private void registroExitoso(ApiResponse response) {
-        // Verificar que la respuesta y los datos sean válidos
-        if (response != null && response.isSuccess() && response.getData() != null) {
-            User user = response.getData();
-
-            // Guardar solo el user_id en SharedPreferences
-            SharedPreferences sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-
-            if (user.getId() != null) {  // Asume que User tiene un método getId()
-                editor.putInt("user_id", user.getId());
-                editor.apply(); // ¡Importante aplicar los cambios!
-
-                // Redirigir a MainActivity
-                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            } else {
-                Toast.makeText(this, "Error: ID de usuario no recibido", Toast.LENGTH_SHORT).show();
-            }
+        if (mostrar) {
+            progressDialog.show();
         } else {
-            Toast.makeText(this, "Error en el registro: " + (response != null ? response.getMessage() : ""), Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
         }
     }
 
