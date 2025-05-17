@@ -39,4 +39,7 @@ public interface ApiService {
             @Part("mascota") RequestBody mascota,
             @Part MultipartBody.Part foto
     );
+
+    @GET("mascotas/{id}")
+    Call<Mascota> getMascotaById(@Path("id") int mascotaId);
 }

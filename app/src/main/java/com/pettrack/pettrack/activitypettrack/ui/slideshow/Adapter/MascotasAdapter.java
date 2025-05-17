@@ -19,10 +19,17 @@ import java.util.List;
 public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.ViewHolder> {
     private List<Mascota> mascotaList;
     private Context context;
+    private OnMascotaClickListener listener;
 
-    public MascotasAdapter(List<Mascota> mascotaList, Context context) {
+    // Interfaz para manejar clicks
+    public interface OnMascotaClickListener {
+        void onMascotaClick(Mascota mascota);
+    }
+
+    public MascotasAdapter(List<Mascota> mascotaList, Context context, OnMascotaClickListener listener) {
         this.mascotaList = mascotaList;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -42,7 +49,7 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.ViewHo
             Glide.with(context)
                     .load(mascota.getFoto())
                     .placeholder(R.drawable.ic_launcher_background) // Imagen por defecto
-                    .error(R.drawable.ic_launcher_background) // Imagen si hay error
+                    .error(R.drawable.ic_launcher_background)       // Imagen si hay error
                     .into(holder.cardImg);
         } else {
             holder.cardImg.setImageResource(R.drawable.ic_launcher_background);
@@ -51,9 +58,14 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.ViewHo
         // Configurar textos (manejando posibles valores nulos)
         holder.txtNombre.setText(mascota.getNombre() != null ? mascota.getNombre() : "Sin nombre");
         holder.txtEdadValue.setText(mascota.getEdad() != null ? mascota.getEdad() : "Edad no especificada");
-
-        // Usar raza como tipo (o puedes agregar un campo tipo en el modelo si es diferente)
         holder.txtTipoValue.setText(mascota.getRaza() != null ? mascota.getRaza() : "Raza no especificada");
+
+        // Configurar click listener
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onMascotaClick(mascota);
+            }
+        });
     }
 
     @Override
