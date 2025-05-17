@@ -76,8 +76,8 @@ public class MisMascotasFragment extends Fragment implements MascotasAdapter.OnM
 
     @Override
     public void onMascotaClick(Mascota mascota) {
-        // Navegar al fragmento de perfil de mascota con el ID
-        Fragment fragment = PetProfileFragment.newInstance(mascota.getId());
+        int userId = obtenerUserId(); // Obtén el ID del usuario
+        Fragment fragment = PetProfileFragment.newInstance(userId, mascota.getId());
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.nav_host_fragment_content_activity_pet_track, fragment)
                 .addToBackStack(null)

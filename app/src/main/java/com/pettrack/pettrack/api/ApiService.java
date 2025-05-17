@@ -40,6 +40,9 @@ public interface ApiService {
             @Part MultipartBody.Part foto
     );
 
-    @GET("mascotas/{id}")
-    Call<Mascota> getMascotaById(@Path("id") int mascotaId);
+    @GET("usuarios/{userId}/mascotas/{mascotaId}")
+    Call<Mascota> getMascotaById(
+            @Path("userId") int userId,
+            @Path("mascotaId") int mascotaId
+    );
 }
