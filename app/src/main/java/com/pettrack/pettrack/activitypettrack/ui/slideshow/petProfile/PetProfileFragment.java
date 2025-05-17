@@ -23,8 +23,7 @@ import retrofit2.Response;
 public class PetProfileFragment extends Fragment {
     private static final String ARG_MASCOTA_ID = "mascota_id";
 
-    private FragmentPetProfilerragmentBinding binding;
-    private int mascotaId;
+    private FragmentPetProfilerragmentBinding binding;    private int mascotaId;
     private Mascota mascota;
 
     public static PetProfileFragment newInstance(int mascotaId) {
@@ -46,7 +45,6 @@ public class PetProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Cambiado a FragmentPetProfilerragmentBinding
         binding = FragmentPetProfilerragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -54,17 +52,7 @@ public class PetProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         cargarDatosMascota();
-
-        // Configurar listeners para los botones
-        binding.btnAddVaccine.setOnClickListener(v -> {
-            // Lógica para añadir vacuna
-        });
-
-        binding.btnAddMedicalRecord.setOnClickListener(v -> {
-            // Lógica para añadir historial médico
-        });
     }
 
     private void cargarDatosMascota() {
@@ -99,7 +87,6 @@ public class PetProfileFragment extends Fragment {
             binding.tvPetWeight.setText(mascota.getPeso());
             binding.tvPetDistinctiveFeatures.setText(mascota.getSeniasParticulares());
 
-            // Cargar foto si existe
             if (mascota.getFoto() != null && !mascota.getFoto().isEmpty()) {
                 Glide.with(requireContext())
                         .load(mascota.getFoto())
