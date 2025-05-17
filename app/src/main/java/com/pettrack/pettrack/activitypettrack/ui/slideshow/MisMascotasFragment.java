@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,13 +53,10 @@ public class MisMascotasFragment extends Fragment {
         recyclerMascotas.setAdapter(mascotasAdapter);
 
         // Configurar el botón de agregar mascota
-        binding.btnAgregarMascota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Iniciar la actividad de registro de mascota
-                Intent intent = new Intent(getActivity(), RegistroMascota.class);
-                startActivity(intent);
-            }
+        binding.btnAgregarMascota.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), RegistroMascota.class);
+            intent.putExtra("user_id", obtenerUserId());
+            startActivity(intent);
         });
 
         // Cargar mascotas
@@ -72,7 +68,6 @@ public class MisMascotasFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Recargar las mascotas cuando el fragment vuelva a ser visible
         cargarMascotas();
     }
 
@@ -88,7 +83,6 @@ public class MisMascotasFragment extends Fragment {
                     mascotasList.addAll(response.body());
                     mascotasAdapter.notifyDataSetChanged();
 
-                    // Mostrar u ocultar vistas según si hay mascotas
                     if (mascotasList.isEmpty()) {
                         mostrarMensajeSinMascotas();
                     } else {
