@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_mis_mascotas" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.pettrack.pettrack.activitypettrack.ui.slideshow.MisMascotasFragment"
+        android:id="@+id/nav_slideshow1"
+        android:name="com.pettrack.pettrack.activitypettrack.ui.gallery.CalendarioFragment"
         android:label="@string/menu_calendario"
         tools:layout="@layout/fragment_calendario" />
 </navigation>
