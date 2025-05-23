@@ -6,6 +6,8 @@ import com.pettrack.pettrack.models.Mascota;
 import com.pettrack.pettrack.models.User;
 import com.pettrack.pettrack.models.signup.RegisterRequest;
 import com.pettrack.pettrack.models.signup.ApiResponse;
+import com.pettrack.pettrack.models.cartillavacunacion.Vacuna;
+import com.pettrack.pettrack.models.cartillavacunacion.Desparasitacion;
 
 import java.util.List;
 
@@ -20,16 +22,18 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ApiService {
+    // Usuarios
     @POST("/usuarios/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
 
-    @POST("/usuarios") // Endpoint para registro
+    @POST("/usuarios")
     Call<ApiResponse> registerUser(@Body RegisterRequest registerRequest);
 
-    @GET("usuarios/{id}")
-    Call<User> getUserById(@Path("id") int userId); // Cambiado a int
+    @GET("/usuarios/{id}")
+    Call<User> getUserById(@Path("id") int userId);
 
-    @GET("usuarios/{id}/mascotas")
+    // Mascotas
+    @GET("/usuarios/{id}/mascotas")
     Call<List<Mascota>> getMascotasByUsuarioId(@Path("id") int usuarioId);
 
     @Multipart
