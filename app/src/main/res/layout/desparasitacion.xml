@@ -32,9 +32,9 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
-        android:ems="10"
         android:hint="Fecha de aplicación"
-        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFAplicacionDes" />
@@ -56,9 +56,9 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
-        android:ems="10"
         android:hint="Fecha de próxima aplicación"
-        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPrxAplicacionDes" />
