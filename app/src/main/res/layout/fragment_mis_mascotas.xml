@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- RecyclerView para mostrar las mascotas -->
     <androidx.recyclerview.widget.RecyclerView
@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btn_agregar_mascota"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMisMascotas"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- TextView para mostrar cuando no hay mascotas -->
     <TextView
@@ -26,30 +26,21 @@
         android:text="No tienes mascotas registradas"
         android:textSize="18sp"
         android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/txtMisMascotas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mis Mascotas"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+    <!-- Botón para agregar mascota -->
     <Button
         android:id="@+id/btn_agregar_mascota"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:text="+"
         android:textSize="25sp"
+        android:backgroundTint="#F88349"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
