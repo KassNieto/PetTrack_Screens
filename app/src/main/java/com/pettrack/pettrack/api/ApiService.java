@@ -49,4 +49,24 @@ public interface ApiService {
             @Path("userId") int userId,
             @Path("mascotaId") int mascotaId
     );
+
+    // Vacunas
+    @GET("/mascotas/{id}/vacunas")
+    Call<List<Vacuna>> getVacunasByMascotaId(@Path("id") int mascotaId);
+
+    @GET("/mascotas/{id}/vacunas/{vacunaId}")
+    Call<Vacuna> getVacunaById(@Path("id") int mascotaId, @Path("vacunaId") int vacunaId);
+
+    @POST("/mascotas/{id}/vacunas")
+    Call<Vacuna> agregarVacuna(@Path("id") int mascotaId, @Body Vacuna vacuna);
+
+    // Desparasitaciones
+    @GET("/mascotas/{id}/desparasitaciones")
+    Call<List<Desparasitacion>> getDesparasitacionesByMascotaId(@Path("id") int mascotaId);
+
+    @GET("/desparasitaciones/{id}")
+    Call<Desparasitacion> getDesparasitacionById(@Path("id") int desparasitacionId);
+
+    @POST("/mascotas/{id}/desparasitaciones")
+    Call<Desparasitacion> agregarDesparasitacion(@Path("id") int mascotaId, @Body Desparasitacion desparasitacion);
 }
