@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,9 +24,6 @@ public class CalendarioFragment extends Fragment {
 
         binding = FragmentCalendarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.txtCalendario;
-        calendarioViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         CalendarView calendar = binding.calendarView;
         calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
