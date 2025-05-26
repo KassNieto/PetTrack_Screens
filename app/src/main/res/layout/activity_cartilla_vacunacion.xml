@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".cartillavacunacion.CartillaVacunacion">
 
+
     <!-- Título principal -->
     <TextView
         android:id="@+id/txtTitulo"
@@ -60,14 +61,10 @@
                 android:stretchColumns="*"
                 android:background="#EEE"
                 android:padding="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"/>
 
-                <TableRow>
-                    <TextView android:text="Fecha" android:textStyle="bold"/>
-                    <TextView android:text="Vacuna" android:textStyle="bold"/>
-                    <TextView android:text="Próxima" android:textStyle="bold"/>
-                </TableRow>
-            </TableLayout>
+
+
 
             <!-- Botón Desparasitación -->
             <Button
@@ -90,13 +87,6 @@
                 android:background="#EEE"
                 android:padding="8dp"
                 android:layout_marginTop="8dp">
-
-                <TableRow>
-                    <TextView android:text="Fecha" android:textStyle="bold"/>
-                    <TextView android:text="Peso (Kg)" android:textStyle="bold"/>
-                    <TextView android:text="Dosis" android:textStyle="bold"/>
-                    <TextView android:text="Próxima" android:textStyle="bold"/>
-                </TableRow>
             </TableLayout>
         </LinearLayout>
     </ScrollView>

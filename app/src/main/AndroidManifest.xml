@@ -30,10 +30,15 @@
             </intent-filter>
         </activity>
 
+
         <activity
             android:name=".signup.SignUp"
             android:exported="true" />
-        <activity android:name=".activitypettrack.PetTrackActivity" />
+
+
+        <activity
+            android:name=".activitypettrack.PetTrackActivity"
+            android:exported="true"/>
 
 
         <activity
@@ -52,6 +57,10 @@
             android:exported="true" />
         <activity android:name=".registromascota.RegistroMascota"
             android:exported="true" />
+
+        <activity android:name=".cartillavacunacion.CartillaVacunacion" />
+
+
     </application>
 
 </manifest>
