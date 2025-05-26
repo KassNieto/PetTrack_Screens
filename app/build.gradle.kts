@@ -14,7 +14,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+        buildConfigField(
+            "String",
+            "API_PETTRACK_URL",
+            "\"${project.findProperty("API_PETTRACK_URL") ?: "http://52.54.155.16:8080/"}\""
+        )    }
 
     buildTypes {
         release {
@@ -30,7 +34,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
+    }
+    viewBinding {
+        enable = true
     }
 }
 
@@ -44,7 +52,13 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.google.code.gson:gson:2.8.9")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 }

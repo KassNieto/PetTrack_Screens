@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarVac"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F88349"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.PetTrack.PopupOverlay" />
+
+    <!-- Fecha de aplicación -->
+    <TextView
+        android:id="@+id/txtFAplicacionVac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="174dp"
+        android:layout_marginEnd="198dp"
+        android:text="Fecha Aplicación"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarVac" />
+
+    <EditText
+        android:id="@+id/addFAplicacionVac"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Fecha de Aplicación"
+        android:inputType="date"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtFAplicacionVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Próxima aplicación -->
+    <TextView
+        android:id="@+id/txtPrxAplicacionVac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Próxima aplicación"
+        app:layout_constraintTop_toBottomOf="@+id/addFAplicacionVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/addPrxAplicacionVac"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Fecha de próxima aplicación"
+        android:inputType="date"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrxAplicacionVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tipo de vacuna (campo de texto editable) -->
+    <TextView
+        android:id="@+id/txtTipoDeVac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Tipo de vacuna"
+        app:layout_constraintTop_toBottomOf="@+id/addPrxAplicacionVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/addTipoVac"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Escribe el tipo de vacuna"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtTipoDeVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón guardar -->
+    <Button
+        android:id="@+id/btnGuardarVac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#F88349"
+        android:text="Guardar"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/addTipoVac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

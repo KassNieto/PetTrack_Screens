@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txt_registro_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Registro de mascota"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nombre -->
+        <TextView
+            android:id="@+id/txt_nombre_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="24dp"
+            android:text="Nombre"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_registro_mascota" />
+
+        <EditText
+            android:id="@+id/edit_nombre_mascota"
+            android:layout_width="275dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/nombre_mascota"
+            android:inputType="text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nombre_mascota" />
+
+        <!-- Sexo -->
+        <TextView
+            android:id="@+id/txt_sexo_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Sexo"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nombre_mascota" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_sexo_mascota">
+
+            <RadioButton
+                android:id="@+id/radioMacho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Macho" />
+
+            <RadioButton
+                android:id="@+id/radioHembra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Hembra" />
+        </RadioGroup>
+
+        <!-- Raza -->
+        <TextView
+            android:id="@+id/txt_raza_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Raza"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupSexo" />
+
+        <EditText
+            android:id="@+id/edit_raza_mascota"
+            android:layout_width="275dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/raza_mascota"
+            android:inputType="text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_raza_mascota" />
+
+        <!-- Edad -->
+        <TextView
+            android:id="@+id/txt_edad_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Edad"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_raza_mascota" />
+
+        <EditText
+            android:id="@+id/edit_edad_mascota"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/edad_mascota"
+            android:inputType="number"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_edad_mascota" />
+
+        <!-- Color -->
+        <TextView
+            android:id="@+id/txt_color_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Color"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_edad_mascota" />
+
+        <EditText
+            android:id="@+id/edit_color_mascota"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/color_mascota"
+            android:inputType="text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_color_mascota" />
+
+        <!-- Peso -->
+        <TextView
+            android:id="@+id/txt_peso_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Peso"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_color_mascota" />
+
+        <EditText
+            android:id="@+id/edit_peso_mascota"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/peso_mascota"
+            android:inputType="numberDecimal"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_peso_mascota" />
+
+        <!-- Señas particulares -->
+        <TextView
+            android:id="@+id/txt_senyas_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Señas Particulares"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_peso_mascota" />
+
+        <EditText
+            android:id="@+id/edit_senyas_mascota"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:hint="@string/descripcion_mascota"
+            android:inputType="textMultiLine"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_senyas_mascota" />
+
+        <!-- Foto de perfil -->
+        <TextView
+            android:id="@+id/txt_foto_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:text="Foto de perfil"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_senyas_mascota" />
+
+        <ImageView
+            android:id="@+id/img_mascota"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:background="#CCCCCC"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_foto_mascota" />
+
+        <Button
+            android:id="@+id/btn_seleccionar_foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="#F88349"
+            android:text="@string/seleccionar_foto"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_mascota" />
+
+        <!-- Botón Agregar -->
+        <Button
+            android:id="@+id/btn_agregar_mascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="#F88349"
+            android:text="@string/agregar"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_seleccionar_foto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

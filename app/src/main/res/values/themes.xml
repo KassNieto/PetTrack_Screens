@@ -3,6 +3,7 @@
     <style name="Base.Theme.PetTrack" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowSwipeToDismiss">false</item>
     </style>
 
     <style name="Theme.PetTrack" parent="Base.Theme.PetTrack" />
@@ -15,4 +16,15 @@
     <style name="Theme.PetTrack.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PetTrack.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.PetTrack.Fullscreen" parent="Theme.PetTrack">
+        <item name="android:actionBarStyle">@style/Widget.Theme.PetTrack.ActionBar.Fullscreen</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.PetTrack.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>

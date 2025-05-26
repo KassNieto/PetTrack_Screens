@@ -1,22 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFFFF"
     tools:context=".activitypettrack.ui.home.MiPerfilFragment">
-
-    <TextView
-        android:id="@+id/txtMiCuenta"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="24dp">
+        <!-- Agrega esto en tu ConstraintLayout, preferiblemente al inicio -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <!-- Título principal -->
+
+        <!-- Sección Nombre(s) -->
+        <TextView
+            android:id="@+id/labelNombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="@string/nombres_label"
+            android:textColor="#333333"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="78dp" />
+
+        <TextView
+            android:id="@+id/tvNombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/nombres_valor"
+            android:textSize="22sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelNombres"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvNombres"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Sección Apellidos -->
+        <TextView
+            android:id="@+id/labelApellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apellidos_label"
+            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvNombres"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvApellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/apellidos_valor"
+            android:textSize="22sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelApellidos"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvApellidos"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Sección Teléfono -->
+        <TextView
+            android:id="@+id/labelTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/telefono_label"
+            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvApellidos"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/telefono_valor"
+            android:textSize="22sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelTelefono"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTelefono"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Sección Fecha Nacimiento -->
+        <TextView
+            android:id="@+id/labelFechaNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_nacimiento_label"
+            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTelefono"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvFechaNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/fecha_nacimiento_valor"
+            android:textSize="22sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Sección Correo -->
+        <TextView
+            android:id="@+id/labelCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/correo_label"
+            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/correo_valor"
+            android:textSize="22sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="40dp"
+            app:layout_constraintTop_toBottomOf="@id/labelCorreo"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
