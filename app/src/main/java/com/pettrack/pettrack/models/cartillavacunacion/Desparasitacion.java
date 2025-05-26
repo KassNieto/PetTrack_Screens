@@ -1,23 +1,34 @@
 package com.pettrack.pettrack.models.cartillavacunacion;
 
+import com.google.gson.annotations.SerializedName;
+import com.pettrack.pettrack.models.Mascota;
+
 public class Desparasitacion {
     private int id;
     private String fechaAplicacion;
-    private String proximaAplicacion;
-    private String peso;
+
+    @SerializedName("fechaProximaAplicacion")
+    private String fechaProximaAplicacion;
+
     private String dosis;
-    private int idMascota; // NUEVO campo
+    private double pesoKg;
+    private Mascota mascota;
 
     // Constructor vacío requerido por Retrofit
     public Desparasitacion() {}
 
     // Constructor con parámetros
-    public Desparasitacion(String fechaAplicacion, String proximaAplicacion, String dosis, String peso, int idMascota) {
+    public Desparasitacion(String fechaAplicacion, String fechaProximaAplicacion,
+                           String dosis, double pesoKg, int mascotaId) {
         this.fechaAplicacion = fechaAplicacion;
-        this.proximaAplicacion = proximaAplicacion;
+        this.fechaProximaAplicacion = fechaProximaAplicacion;
         this.dosis = dosis;
-        this.peso = peso;
-        this.idMascota = idMascota;
+        this.pesoKg = pesoKg;
+
+        // Creamos el objeto Mascota con sólo el ID
+        Mascota m = new Mascota();
+        m.setId(mascotaId);
+        this.mascota = m;
     }
 
     // Getters y Setters
@@ -25,47 +36,47 @@ public class Desparasitacion {
         return id;
     }
 
-    public String getFechaAplicacion() {
-        return fechaAplicacion;
-    }
-
-    public String getProximaAplicacion() {
-        return proximaAplicacion;
-    }
-
-    public String getPeso() {
-        return peso;
-    }
-
-    public String getDosis() {
-        return dosis;
-    }
-
-    public int getIdMascota() {
-        return idMascota;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFechaAplicacion() {
+        return fechaAplicacion;
     }
 
     public void setFechaAplicacion(String fechaAplicacion) {
         this.fechaAplicacion = fechaAplicacion;
     }
 
-    public void setProximaAplicacion(String proximaAplicacion) {
-        this.proximaAplicacion = proximaAplicacion;
+    public String getFechaProximaAplicacion() {
+        return fechaProximaAplicacion;
     }
 
-    public void setPeso(String peso) {
-        this.peso = peso;
+    public void setFechaProximaAplicacion(String fechaProximaAplicacion) {
+        this.fechaProximaAplicacion = fechaProximaAplicacion;
+    }
+
+    public String getDosis() {
+        return dosis;
     }
 
     public void setDosis(String dosis) {
         this.dosis = dosis;
     }
 
-    public void setIdMascota(int idMascota) {
-        this.idMascota = idMascota;
+    public double getPesoKg() {
+        return pesoKg;
+    }
+
+    public void setPesoKg(double pesoKg) {
+        this.pesoKg = pesoKg;
+    }
+
+    public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
 }

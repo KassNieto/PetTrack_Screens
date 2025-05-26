@@ -81,7 +81,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:hint="Dosis de la vacuna"
+        android:hint="Dosis de la desparasitación"
         android:inputType="numberDecimal"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"

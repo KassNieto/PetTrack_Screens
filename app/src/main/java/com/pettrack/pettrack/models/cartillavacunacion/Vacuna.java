@@ -1,30 +1,40 @@
 package com.pettrack.pettrack.models.cartillavacunacion;
-import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.annotations.SerializedName;
+import com.pettrack.pettrack.models.Mascota;
 
 public class Vacuna {
     private int id;
     private String fechaAplicacion;
+
     @SerializedName("fechaProximaAplicacion")
     private String proximaAplicacion;
 
     private String tipoVacuna;
-    private int mascotaId;
+    private Mascota mascota;
 
     // Constructor vacío (requerido por Retrofit/GSON)
     public Vacuna() {}
 
-    // Constructor completo
+    // Constructor completo que recibe idMascota e inicializa mascota
     public Vacuna(String fechaAplicacion, String proximaAplicacion, String tipoVacuna, int mascotaId) {
         this.fechaAplicacion = fechaAplicacion;
         this.proximaAplicacion = proximaAplicacion;
         this.tipoVacuna = tipoVacuna;
-        this.mascotaId = mascotaId;
+
+        // Creamos el objeto Mascota con sólo el ID
+        Mascota m = new Mascota();
+        m.setId(mascotaId);
+        this.mascota = m;
     }
 
     // Getters y setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFechaAplicacion() {
@@ -51,11 +61,11 @@ public class Vacuna {
         this.tipoVacuna = tipoVacuna;
     }
 
-    public int getMascotaId() {
-        return mascotaId;
+    public Mascota getMascota() {
+        return mascota;
     }
 
-    public void setMascotaId(int mascotaId) {
-        this.mascotaId = mascotaId;
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
 }

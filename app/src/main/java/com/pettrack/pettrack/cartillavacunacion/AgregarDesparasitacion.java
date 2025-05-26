@@ -2,18 +2,22 @@ package com.pettrack.pettrack.cartillavacunacion;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.pettrack.pettrack.R;
-import com.pettrack.pettrack.api.ApiClient;
-import com.pettrack.pettrack.api.ApiService;
-import com.pettrack.pettrack.models.cartillavacunacion.Desparasitacion;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.gson.Gson;
+import com.pettrack.pettrack.R;
+import com.pettrack.pettrack.api.ApiClient;
+import com.pettrack.pettrack.api.ApiService;
+import com.pettrack.pettrack.models.Mascota;
+import com.pettrack.pettrack.models.cartillavacunacion.Desparasitacion;
+
+import java.io.IOException;
 import java.util.Calendar;
 
 import retrofit2.Call;
@@ -22,88 +26,164 @@ import retrofit2.Response;
 
 public class AgregarDesparasitacion extends AppCompatActivity {
 
+    private static final String TAG = "AgregarDesparasitacion";
+
     private EditText addFAplicacionDes, addPrxAplicacionDes, addDosis, addPesoDes;
     private Button btnGuardarDes;
-    private int idMascota;
+    private int mascotaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.desparasitacion);
 
+        setupToolbar();
+        initViews();
+        getMascotaIdFromIntent();
+        setupListeners();
+    }
+
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbarDes);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Desparasitación");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Agregar Desparasitación");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         toolbar.setNavigationOnClickListener(view -> finish());
+    }
 
+    private void initViews() {
         addFAplicacionDes = findViewById(R.id.addFAplicacionDes);
         addPrxAplicacionDes = findViewById(R.id.addPrxAplicacionDes);
         addDosis = findViewById(R.id.addDosis);
         addPesoDes = findViewById(R.id.addPesoDes);
         btnGuardarDes = findViewById(R.id.btnGuardarDes);
+    }
 
-        // Mostrar el calendario al tocar los campos de fecha
-        addFAplicacionDes.setOnClickListener(v -> mostrarDatePicker(addFAplicacionDes));
-        addPrxAplicacionDes.setOnClickListener(v -> mostrarDatePicker(addPrxAplicacionDes));
+    private void getMascotaIdFromIntent() {
+        mascotaId = getIntent().getIntExtra("mascotaId", -1);
+        if (mascotaId == -1) {
+            Toast.makeText(this, "Error: No se recibió ID de mascota", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        Log.d(TAG, "ID Mascota recibido: " + mascotaId);
+    }
 
-        // Obtener el ID de la mascota desde el Intent
-        idMascota = getIntent().getIntExtra("idMascota", -1);
+    private void setupListeners() {
+        // Mostrar DatePicker al tocar campos de fecha
+        addFAplicacionDes.setOnClickListener(v -> showDatePickerDialog(addFAplicacionDes));
+        addPrxAplicacionDes.setOnClickListener(v -> showDatePickerDialog(addPrxAplicacionDes));
 
-        btnGuardarDes.setOnClickListener(v -> {
-            String fecha = addFAplicacionDes.getText().toString().trim();
-            String proxima = addPrxAplicacionDes.getText().toString().trim();
-            String dosis = addDosis.getText().toString().trim();
-            String peso = addPesoDes.getText().toString().trim();
+        // Guardar desparasitación al tocar el botón
+        btnGuardarDes.setOnClickListener(v -> validateAndSaveDesparasitacion());
+    }
 
-            if (fecha.isEmpty() || proxima.isEmpty() || dosis.isEmpty() || peso.isEmpty()) {
-                Toast.makeText(AgregarDesparasitacion.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
-            } else if (idMascota == -1) {
-                Toast.makeText(this, "Error: ID de mascota no recibido", Toast.LENGTH_SHORT).show();
-            } else {
-                // Crea el objeto Desparasitacion usando constructor vacío y setters
-                Desparasitacion nuevaDesparasitacion = new Desparasitacion();
-                nuevaDesparasitacion.setFechaAplicacion(fecha);
-                nuevaDesparasitacion.setProximaAplicacion(proxima);
-                nuevaDesparasitacion.setDosis(dosis);
-                nuevaDesparasitacion.setPeso(peso);
-                // El idMascota no está en el modelo, si tu API requiere enviar el idMascota,
-                // considera agregar un campo o manejarlo en el backend.
+    private void showDatePickerDialog(final EditText editText) {
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                (view, year, month, day) -> {
+                    String selectedDate = String.format("%04d-%02d-%02d", year, month + 1, day);
+                    editText.setText(selectedDate);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
 
-                // Llama al servicio
-                ApiService apiService = ApiClient.getApiService();
-                apiService.agregarDesparasitacion(idMascota, nuevaDesparasitacion).enqueue(new Callback<Desparasitacion>() {
-                    @Override
-                    public void onResponse(Call<Desparasitacion> call, Response<Desparasitacion> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(AgregarDesparasitacion.this, "Desparasitación guardada correctamente", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(AgregarDesparasitacion.this, "Error al guardar en la API", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+    private void validateAndSaveDesparasitacion() {
+        String fechaAplicacion = addFAplicacionDes.getText().toString().trim();
+        String fechaProximaAplicacion = addPrxAplicacionDes.getText().toString().trim();
+        String dosis = addDosis.getText().toString().trim();
+        String pesoStr = addPesoDes.getText().toString().trim();
 
-                    @Override
-                    public void onFailure(Call<Desparasitacion> call, Throwable t) {
-                        Toast.makeText(AgregarDesparasitacion.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (fechaAplicacion.isEmpty()) {
+            addFAplicacionDes.setError("Ingrese la fecha de aplicación");
+            return;
+        }
+
+        if (pesoStr.isEmpty()) {
+            addPesoDes.setError("Ingrese el peso de la mascota");
+            return;
+        }
+
+        double pesoKg;
+        try {
+            pesoKg = Double.parseDouble(pesoStr);
+        } catch (NumberFormatException e) {
+            addPesoDes.setError("Ingrese un peso válido");
+            return;
+        }
+
+        if (fechaProximaAplicacion.isEmpty()) {
+            fechaProximaAplicacion = fechaAplicacion;
+        }
+
+        Desparasitacion desparasitacion = createDesparasitacionObject(fechaAplicacion, fechaProximaAplicacion, dosis, pesoKg);
+
+        Log.d(TAG, "Enviando desparasitación: " + new Gson().toJson(desparasitacion));
+
+        saveDesparasitacionToApi(desparasitacion);
+    }
+
+    private Desparasitacion createDesparasitacionObject(String fechaAplicacion, String fechaProximaAplicacion, String dosis, double pesoKg) {
+        Desparasitacion desparasitacion = new Desparasitacion();
+        desparasitacion.setFechaAplicacion(fechaAplicacion);
+        desparasitacion.setFechaProximaAplicacion(fechaProximaAplicacion);
+        desparasitacion.setDosis(dosis);
+        desparasitacion.setPesoKg(pesoKg);
+
+        Mascota mascota = new Mascota();
+        mascota.setId(mascotaId);
+        desparasitacion.setMascota(mascota);
+
+        return desparasitacion;
+    }
+
+    private void saveDesparasitacionToApi(Desparasitacion desparasitacion) {
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<Desparasitacion> call = apiService.agregarDesparasitacion(mascotaId, desparasitacion);
+
+        call.enqueue(new Callback<Desparasitacion>() {
+            @Override
+            public void onResponse(Call<Desparasitacion> call, Response<Desparasitacion> response) {
+                if (response.isSuccessful()) {
+                    handleSuccessResponse(response);
+                } else {
+                    handleErrorResponse(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Desparasitacion> call, Throwable t) {
+                handleFailure(t);
             }
         });
     }
 
-    // Método para mostrar el DatePicker
-    private void mostrarDatePicker(EditText editText) {
-        final Calendar calendario = Calendar.getInstance();
-        int anio = calendario.get(Calendar.YEAR);
-        int mes = calendario.get(Calendar.MONTH);
-        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+    private void handleSuccessResponse(Response<Desparasitacion> response) {
+        Log.d(TAG, "Desparasitación guardada exitosamente");
+        Toast.makeText(AgregarDesparasitacion.this, "Desparasitación registrada correctamente", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
+        finish();
+    }
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (view, year, month, dayOfMonth) -> {
-                    String fechaSeleccionada = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year);
-                    editText.setText(fechaSeleccionada);
-                }, anio, mes, dia);
-        datePickerDialog.show();
+    private void handleErrorResponse(Response<Desparasitacion> response) {
+        try {
+            String errorBody = response.errorBody() != null ? response.errorBody().string() : "Error desconocido";
+            Log.e(TAG, "Error al guardar desparasitación: " + response.code() + " - " + errorBody);
+            Toast.makeText(AgregarDesparasitacion.this, "Error al registrar: " + errorBody, Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Log.e(TAG, "Error al leer errorBody", e);
+            Toast.makeText(AgregarDesparasitacion.this, "Error al procesar respuesta", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void handleFailure(Throwable t) {
+        Log.e(TAG, "Error de conexión: " + t.getMessage(), t);
+        Toast.makeText(AgregarDesparasitacion.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }
