@@ -10,17 +10,33 @@
     tools:context=".activitypettrack.ui.gallery.CalendarioFragment">
 
     <!-- Título del calendario -->
+    <TextView
+        android:id="@+id/txtCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Calendario"
+        android:textAlignment="center"
+        android:textColor="#FF3A3A3A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Vista de calendario -->
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintTop_toBottomOf="@id/txtCalendario" />
 
     <!-- Botón para añadir nuevos pendientes -->
     <com.google.android.material.button.MaterialButton

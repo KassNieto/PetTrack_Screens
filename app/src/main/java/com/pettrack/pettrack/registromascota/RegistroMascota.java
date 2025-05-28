@@ -1,7 +1,6 @@
 package com.pettrack.pettrack.registromascota;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -182,10 +181,7 @@ public class RegistroMascota extends AppCompatActivity {
     }
 
     private File getFileFromUri(Uri uri) throws IOException {
-        String fileName = getFileNameFromUri(uri);
-        if (fileName == null) fileName = "mascota_" + System.currentTimeMillis() + ".jpg";
-
-        File tempFile = new File(getCacheDir(), fileName);
+        File tempFile = new File(getCacheDir(), "temp_image.jpg");
         try (InputStream inputStream = getContentResolver().openInputStream(uri);
              OutputStream outputStream = new FileOutputStream(tempFile)) {
 
@@ -198,25 +194,5 @@ public class RegistroMascota extends AppCompatActivity {
             }
         }
         return tempFile;
-    }
-    private String getFileNameFromUri(Uri uri) {
-        String result = null;
-        if (uri.getScheme().equals("content")) {
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-            try {
-                if (cursor != null && cursor.moveToFirst()) {
-                    int nameIndex = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME);
-                    if (nameIndex != -1) {
-                        result = cursor.getString(nameIndex);
-                    }
-                }
-            } finally {
-                if (cursor != null) cursor.close();
-            }
-        }
-        if (result == null) {
-            result = uri.getLastPathSegment();
-        }
-        return result;
     }
 }

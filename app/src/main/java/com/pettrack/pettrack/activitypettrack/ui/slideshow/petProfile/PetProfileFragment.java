@@ -73,6 +73,13 @@ public class PetProfileFragment extends Fragment {
             Log.d("PetProfile", "Abriendo CartillaVacunacion con mascotaId = " + mascotaId);
             startActivity(intent);
         });
+
+        binding.btnAddVaccine.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), CartillaVacunacion.class);
+            intent.putExtra("mascotaId", mascotaId); // opcional, por si lo necesitas en CartillaVacunacion
+            Log.d("PetProfile", "Abriendo CartillaVacunacion con mascotaId = " + mascotaId);
+            startActivity(intent);
+        });
     }
 
     private void cargarDatosMascota() {

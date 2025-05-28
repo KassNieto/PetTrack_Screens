@@ -1,7 +1,6 @@
 package com.pettrack.pettrack.activitypettrack.ui.slideshow.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.pettrack.pettrack.R;
 import com.pettrack.pettrack.models.Mascota;
 
@@ -47,28 +44,28 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Mascota mascota = mascotaList.get(position);
 
-        // 1️⃣ Primero verifica que la URL no sea nula o vacía
+        // Cargar imagen desde URL (si existe)
         if (mascota.getFoto() != null && !mascota.getFoto().isEmpty()) {
-            // 2️⃣ Usa Glide con las configuraciones que mencionaste
             Glide.with(context)
                     .load(mascota.getFoto())
-                    .override(500, 500)  // Fuerza el tamaño de carga
-                    .transform(new CenterCrop(), new RoundedCorners(16))  // Recorta y redondea esquinas
-                    .placeholder(R.drawable.ic_launcher_background)  // Imagen mientras carga
-                    .error(R.drawable.ic_launcher_background)  // Imagen si falla
+                    .placeholder(R.drawable.ic_launcher_background) // Imagen por defecto
+                    .error(R.drawable.ic_launcher_background)       // Imagen si hay error
                     .into(holder.cardImg);
-
-            // 3️⃣ Opcional: Agrega logs para depuración
-            Log.d("GLIDE_DEBUG", "Cargando imagen: " + mascota.getFoto());
         } else {
-            // Si no hay URL, coloca una imagen por defecto
             holder.cardImg.setImageResource(R.drawable.ic_launcher_background);
-            Log.e("GLIDE_DEBUG", "URL de imagen vacía para: " + mascota.getNombre());
         }
 
-        // Configura los demás views (nombre, edad, etc.)
-        holder.txtNombre.setText(mascota.getNombre());
-        // ... (otros campos)
+        // Configurar textos (manejando posibles valores nulos)
+        holder.txtNombre.setText(mascota.getNombre() != null ? mascota.getNombre() : "Sin nombre");
+        holder.txtEdadValue.setText(mascota.getEdad() != null ? mascota.getEdad() : "Edad no especificada");
+        holder.txtTipoValue.setText(mascota.getRaza() != null ? mascota.getRaza() : "Raza no especificada");
+
+        // Configurar click listener
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onMascotaClick(mascota);
+            }
+        });
     }
 
     @Override

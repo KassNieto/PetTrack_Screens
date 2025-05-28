@@ -16,14 +16,36 @@
         app:popupTheme="@style/Theme.PetTrack.PopupOverlay" />
 
     <TextView
+        android:id="@+id/txtTipoDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="174dp"
+        android:text="@string/tipo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerTipoDes"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/tipo"
+        android:textSize="13sp"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTipoDes" />
+
+    <TextView
         android:id="@+id/txtFAplicacionDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="109dp"
         android:text="Fecha de aplicación"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDes" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTipoDes" />
 
     <EditText
         android:id="@+id/addFAplicacionDes"
@@ -45,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="25dp"
-        android:text="Próxima Aplicación"
+        android:text="Proxima Aplicacion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFAplicacionDes" />
 
@@ -57,7 +79,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:hint="Fecha de próxima aplicación"
+        android:hint="Fecha de proxima aplicación"
         android:inputType="date"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,5 +144,6 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPesoDes" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
