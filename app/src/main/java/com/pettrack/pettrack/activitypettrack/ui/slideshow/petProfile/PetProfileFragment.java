@@ -1,5 +1,6 @@
 package com.pettrack.pettrack.activitypettrack.ui.slideshow.petProfile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import com.pettrack.pettrack.R;
 import com.pettrack.pettrack.databinding.FragmentPetProfilerragmentBinding;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
+import com.pettrack.pettrack.historialmedico.HistorialMedico;
+import com.pettrack.pettrack.historialmedico.PantallaPrincipal;
 import com.pettrack.pettrack.models.Mascota;
 
 import retrofit2.Call;
@@ -62,7 +65,15 @@ public class PetProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         cargarDatosMascota();
+
+        binding.btnAddMedicalRecord.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), PantallaPrincipal.class);
+            intent.putExtra("mascotaId", mascotaId); // opcional, por si lo necesitas en HistorialMedico
+            Log.d("PetProfile", "Abriendo HistorialMedico con mascotaId = " + mascotaId);
+            startActivity(intent);
+        });
     }
+
 
     private void cargarDatosMascota() {
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
