@@ -1,3 +1,4 @@
+
 package com.pettrack.pettrack.activitypettrack.ui.slideshow.petProfile;
 
 import android.content.Intent;
@@ -14,11 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.pettrack.pettrack.R;
-import com.pettrack.pettrack.databinding.FragmentPetProfilerragmentBinding;
 import com.pettrack.pettrack.api.ApiClient;
 import com.pettrack.pettrack.api.ApiService;
-import com.pettrack.pettrack.historialmedico.HistorialMedico;
-import com.pettrack.pettrack.historialmedico.PantallaPrincipal;
+import com.pettrack.pettrack.cartillavacunacion.CartillaVacunacion;
+import com.pettrack.pettrack.databinding.FragmentPetProfilerragmentBinding;
 import com.pettrack.pettrack.models.Mascota;
 
 import retrofit2.Call;
@@ -47,8 +47,8 @@ public class PetProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            userId = getArguments().getInt(ARG_USER_ID);
-            mascotaId = getArguments().getInt(ARG_MASCOTA_ID);
+            userId = getArguments().getInt(ARG_USER_ID, -1);
+            mascotaId = getArguments().getInt(ARG_MASCOTA_ID, -1);
             Log.d("PetProfile", "ID de usuario recibido: " + userId);
             Log.d("PetProfile", "ID de mascota recibido: " + mascotaId);
         }
@@ -66,14 +66,21 @@ public class PetProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         cargarDatosMascota();
 
-        binding.btnAddMedicalRecord.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), PantallaPrincipal.class);
-            intent.putExtra("mascotaId", mascotaId); // opcional, por si lo necesitas en HistorialMedico
-            Log.d("PetProfile", "Abriendo HistorialMedico con mascotaId = " + mascotaId);
+        // Acción del botón + Añadir en Cartilla de vacunación
+        binding.btnAddVaccine.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), CartillaVacunacion.class);
+            intent.putExtra("mascotaId", mascotaId); // opcional, por si lo necesitas en CartillaVacunacion
+            Log.d("PetProfile", "Abriendo CartillaVacunacion con mascotaId = " + mascotaId);
+            startActivity(intent);
+        });
+
+        binding.btnAddVaccine.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), CartillaVacunacion.class);
+            intent.putExtra("mascotaId", mascotaId); // opcional, por si lo necesitas en CartillaVacunacion
+            Log.d("PetProfile", "Abriendo CartillaVacunacion con mascotaId = " + mascotaId);
             startActivity(intent);
         });
     }
-
 
     private void cargarDatosMascota() {
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
@@ -124,7 +131,7 @@ public class PetProfileFragment extends Fragment {
                         .load(mascota.getFoto())
                         .into(binding.ivPetPhoto);
             } else {
-                binding.ivPetPhoto.setImageResource(R.drawable.ic_launcher_background); // Asegúrate de tener un placeholder
+                binding.ivPetPhoto.setImageResource(R.drawable.ic_launcher_background);
             }
         }
     }
